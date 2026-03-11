@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Image To Email Assigner icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c0a1f" />
+      <stop offset="100%" stop-color="#05040d" />
+    </linearGradient>
+    <linearGradient id="moon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2df8ff" />
+      <stop offset="100%" stop-color="#6efbff" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)" />
+  <circle cx="28" cy="28" r="14" fill="url(#moon)" />
+  <circle cx="35" cy="24" r="14" fill="#0c0a1f" />
+  <rect x="18" y="38" width="28" height="18" rx="4" fill="none" stroke="#ff2bd6" stroke-width="3" />
+  <path d="M18 42l14 10 14-10" fill="none" stroke="#ff2bd6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

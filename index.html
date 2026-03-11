@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic document metadata and responsive viewport setup. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image To Email Assigner</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <!-- Load the Inter font family from Google Fonts for consistent typography. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Main stylesheet for layout, colors, and component styling. -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Main application shell containing all interactive panels. -->
+    <main class="app-shell">
+      <!-- Introductory hero section describing the demo. -->
+      <header class="hero">
+        <h1>Image To Email Assigner</h1>
+        <p class="subtitle">
+          Assign a new image from Picsum to any valid email address. Each email can
+          hold unlimited images.
+        </p>
+      </header>
+
+      <!-- Panel showing the currently selected random image and refresh control. -->
+      <section class="panel current-image-panel" aria-labelledby="current-image-heading">
+        <h2 id="current-image-heading">Current Image</h2>
+        <img
+          id="currentImage"
+          class="current-image"
+          src=""
+          alt="Current random image from Picsum"
+        />
+        <button id="newImageBtn" class="secondary-btn" type="button">
+          Load Different Image
+        </button>
+      </section>
+
+      <!-- Form panel used to associate the current image with an email address. -->
+      <section class="panel form-panel" aria-labelledby="assignment-heading">
+        <h2 id="assignment-heading">Assign Image</h2>
+        <form id="assignmentForm" novalidate>
+          <label for="emailInput">Email address</label>
+          <div class="input-row">
+            <input
+              id="emailInput"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="name@example.com"
+              required
+            />
+            <button type="submit" class="primary-btn">Assign Image</button>
+          </div>
+          <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- Results panel showing each email and the images linked to it. -->
+      <section class="panel results-panel" aria-labelledby="assignments-heading">
+        <div class="results-header">
+          <h2 id="assignments-heading">Assignments by Email</h2>
+          <span id="assignmentCount" class="count-pill">0 emails</span>
+        </div>
+        <div id="assignmentsContainer" class="assignments-grid"></div>
+      </section>
+    </main>
+
+    <!-- Client-side logic for image loading, validation, assignment, and rendering. -->
+    <script src="script.js"></script>
+  </body>
+</html>

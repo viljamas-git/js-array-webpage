@@ -1,0 +1,278 @@
+:root {
+  /* Centralized design tokens keep the neon palette and effects consistent. */
+  color-scheme: dark;
+  --bg: #05040d;
+  --bg-2: #0c0a1f;
+  --surface: rgba(16, 14, 36, 0.78);
+  --surface-2: rgba(25, 21, 51, 0.9);
+  --text: #f4ecff;
+  --muted: #b8afd4;
+  --primary: #2df8ff;
+  --primary-hover: #6efbff;
+  --accent: #ff2bd6;
+  --accent-2: #a234ff;
+  --border: rgba(136, 111, 255, 0.45);
+  --success: #47ff9a;
+  --danger: #ff6c97;
+  --shadow: 0 0 0 1px rgba(188, 167, 255, 0.2), 0 20px 44px rgba(5, 2, 20, 0.55);
+  --glow: 0 0 24px rgba(45, 248, 255, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* Layered gradients create the ambient glow behind all content. */
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% 15%, rgba(255, 43, 214, 0.18), transparent 38%),
+    radial-gradient(circle at 90% 0%, rgba(45, 248, 255, 0.16), transparent 35%),
+    linear-gradient(135deg, var(--bg) 0%, var(--bg-2) 45%, #070611 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  /* A subtle fixed grid overlays the page to reinforce the sci-fi theme. */
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(175, 149, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(175, 149, 255, 0.09) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 90%);
+  z-index: -1;
+}
+
+.app-shell {
+  width: min(1100px, 92vw);
+  margin: 2.4rem auto 3rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 0.8rem 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  text-shadow: var(--glow);
+}
+
+h1 {
+  margin: 0.35rem 0 0.75rem;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  letter-spacing: 0.02em;
+  color: var(--primary);
+  text-shadow: 0 0 20px rgba(255, 43, 214, 0.24);
+}
+
+.subtitle {
+  max-width: 65ch;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+.panel {
+  /* Shared card treatment for major content sections. */
+  background: linear-gradient(155deg, rgba(23, 19, 48, 0.75), var(--surface));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 1.3rem;
+  backdrop-filter: blur(6px);
+}
+
+.current-image-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.current-image {
+  width: 100%;
+  max-height: 430px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(132, 225, 255, 0.45);
+  background: #0b0920;
+  box-shadow: 0 0 18px rgba(45, 248, 255, 0.22);
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #f5f3ff;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.55rem;
+}
+
+input[type="email"] {
+  flex: 1;
+  border: 1px solid rgba(193, 170, 255, 0.5);
+  background: rgba(7, 5, 22, 0.8);
+  color: var(--text);
+  border-radius: 10px;
+  font: inherit;
+  padding: 0.75rem 0.85rem;
+}
+
+input[type="email"]::placeholder {
+  color: rgba(211, 199, 241, 0.62);
+}
+
+input[type="email"]:focus {
+  /* Strong focus states improve keyboard accessibility and visibility. */
+  outline: 2px solid color-mix(in srgb, var(--primary) 42%, transparent);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45, 248, 255, 0.14);
+}
+
+button {
+  /* Base button behavior; variants below only override visual styling. */
+  border: 0;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 600;
+  padding: 0.72rem 1rem;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+.primary-btn {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(255, 43, 214, 0.28);
+}
+
+.primary-btn:hover {
+  box-shadow: 0 0 26px rgba(255, 43, 214, 0.42);
+}
+
+.secondary-btn {
+  justify-self: start;
+  background: rgba(24, 23, 46, 0.95);
+  color: var(--primary);
+  border: 1px solid rgba(45, 248, 255, 0.42);
+  box-shadow: inset 0 0 10px rgba(45, 248, 255, 0.15);
+}
+
+.secondary-btn:hover {
+  background: rgba(28, 30, 59, 0.95);
+  box-shadow: inset 0 0 14px rgba(45, 248, 255, 0.24), 0 0 20px rgba(45, 248, 255, 0.2);
+}
+
+.form-message {
+  min-height: 1.2em;
+  margin: 0.7rem 0 0;
+  font-weight: 500;
+}
+
+.form-message.error {
+  color: var(--danger);
+}
+
+.form-message.success {
+  color: var(--success);
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.count-pill {
+  display: inline-flex;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(34, 30, 70, 0.95);
+  color: var(--primary);
+  border: 1px solid rgba(45, 248, 255, 0.3);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.assignments-grid {
+  /* Responsive auto-fit keeps result cards balanced as width changes. */
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.email-card {
+  border: 1px solid rgba(122, 101, 220, 0.55);
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: linear-gradient(165deg, rgba(29, 24, 58, 0.92), var(--surface-2));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.email-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+  color: #f8f4ff;
+}
+
+.image-count {
+  margin: 0 0 0.7rem;
+  color: rgba(208, 196, 238, 0.85);
+  font-size: 0.9rem;
+}
+
+.thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.thumb-grid img {
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(182, 165, 239, 0.45);
+}
+
+.empty-state {
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 680px) {
+  /* Stack controls on narrow screens for easier tapping and reading. */
+  .app-shell {
+    margin: 1.4rem auto 2rem;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .primary-btn {
+    width: 100%;
+  }
+}
