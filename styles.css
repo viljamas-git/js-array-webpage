@@ -87,7 +87,7 @@ h1 {
 }
 
 .panel {
-  /* Shared card treatment for major content sections. */
+  /* Shared card treatment for major content sections.  */
   background: linear-gradient(155deg, rgba(23, 19, 48, 0.75), var(--surface));
   border: 1px solid var(--border);
   border-radius: 18px;
