@@ -15,7 +15,7 @@ function getNewImageUrl() {
   return `https://picsum.photos/seed/${crypto.randomUUID()}/900/520`;
 }
 
-// Render form feedback text and optionally tag it as success or error.
+// Render form feedback text and optionally tag it as success or error. 
 function showMessage(text, type) {
   formMessage.textContent = text;
   formMessage.className = "form-message";
